@@ -2,7 +2,7 @@
 /*global console*/
 /*
  * cout.js
- * version : 0.0.4
+ * version : 0.0.5
  * author : Takeshi Iwana
  * license : MIT
  * Code heavily borrowed from Adam Draper
@@ -99,6 +99,10 @@
       } else {
         result = config.cout === level;
       }
+    } else if (_.isBoolean(config.cout)) {
+      if (config.cout === true) {
+        result = true;
+      }
     }
     return result;
   }
@@ -110,7 +114,7 @@
   var cout,
     // check for nodeJS
     hasModule = (typeof module !== 'undefined' && module.exports),
-    VERSION = '0.0.4',
+    VERSION = '0.0.5',
     util = require('util'),
     _ = require('lodash'),
     colors = require('colors'),
@@ -165,10 +169,14 @@
 
   cout.fn = Cout.prototype = {
     end: function() {
-      console.log.apply(console, this._input);
+      if (config.cout !== false) {
+        console.log.apply(console, this._input);
+      }
     },
     endl: function() {
-      console.log.apply(console, filter(this._input));
+      if (config.cout !== false) {
+        console.log.apply(console, filter(this._input));
+      }
     },
     warn: function(opt) {
       if (match('warn')) {
@@ -176,69 +184,88 @@
           style = opt ? opt.style : undefined;
         console.log.apply(console, apply(filter(this._input), 'warn', bg, style));
       }
+
     },
     data: function(opt) {
+
       if (match('data')) {
         var bg = opt ? opt.bg : undefined,
           style = opt ? opt.style : undefined;
         console.log.apply(console, apply(filter(this._input), 'data', bg, style));
       }
+
     },
     debug: function(opt) {
+
       if (match('debug')) {
         var bg = opt ? opt.bg : undefined,
           style = opt ? opt.style : undefined;
         console.log.apply(console, apply(filter(this._input), 'debug', bg, style));
       }
+
     },
     error: function(opt) {
+
       if (match('error')) {
         var bg = opt ? opt.bg : undefined,
           style = opt ? opt.style : undefined;
         console.log.apply(console, apply(filter(this._input), 'error', bg, style));
       }
+
     },
     help: function(opt) {
+
       if (match('help')) {
         var bg = opt ? opt.bg : undefined,
           style = opt ? opt.style : undefined;
         console.log.apply(console, apply(filter(this._input), 'help', bg, style));
       }
+
     },
     info: function(opt) {
+
       if (match('info')) {
         var bg = opt ? opt.bg : undefined,
           style = opt ? opt.style : undefined;
         console.log.apply(console, apply(filter(this._input), 'info', bg, style));
       }
+
     },
     input: function(opt) {
+
       if (match('input')) {
         var bg = opt ? opt.bg : undefined,
           style = opt ? opt.style : undefined;
         console.log.apply(console, apply(filter(this._input), 'input', bg, style));
       }
+
     },
     prompt: function(opt) {
+
       if (match('prompt')) {
         var bg = opt ? opt.bg : undefined,
           style = opt ? opt.style : undefined;
         console.log.apply(console, apply(filter(this._input), 'prompt', bg, style));
       }
+
     },
     silly: function(opt) {
+
       if (match('silly')) {
         var bg = opt ? opt.bg : undefined,
           style = opt ? opt.style : undefined;
         console.log.apply(console, apply(filter(this._input), 'silly', bg, style));
       }
+
     },
     verbose: function(opt) {
+
       if (match('verbose')) {
         var bg = opt ? opt.bg : undefined,
           style = opt ? opt.style : undefined;
         console.log.apply(console, apply(filter(this._input), 'verbose', bg, style));
       }
+
     }
 
   };

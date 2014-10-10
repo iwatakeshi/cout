@@ -2,7 +2,7 @@ var cout = require('../cout.js');
 
 cout.config({
   //should only display level 'warn' and 'silly'
-  cout: ['silly', 'warn']
+  cout: ['warn']
 });
 
 cout("Hello", "World", {

@@ -153,3 +153,7 @@ From lack of knowledge, I do not know how to test outputs and colors....that sai
 *0.0.4*
 
 * Added node_modules to .gitignore
+
+*0.0.5*
+
+* Added boolean support. You can now set `{cout:...}` to `true` or `false`.
