@@ -2,7 +2,7 @@
 /*global console*/
 /*
  * cout.js
- * version : 0.0.3
+ * version : 0.0.4
  * author : Takeshi Iwana
  * license : MIT
  * Code heavily borrowed from Adam Draper
@@ -110,7 +110,7 @@
   var cout,
     // check for nodeJS
     hasModule = (typeof module !== 'undefined' && module.exports),
-    VERSION = '0.0.3',
+    VERSION = '0.0.4',
     util = require('util'),
     _ = require('lodash'),
     colors = require('colors'),

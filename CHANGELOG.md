@@ -11,5 +11,10 @@ Change Log
 * Updated readme
 
 *0.0.3*
+
 * Updated readme
 * Removed unnecessary comments.
+
+*0.0.4*
+
+* Added node_modules to .gitignore
