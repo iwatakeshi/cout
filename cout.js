@@ -2,7 +2,7 @@
 /*global console*/
 /*
  * cout.js
- * version : 0.0.2
+ * version : 0.0.3
  * author : Takeshi Iwana
  * license : MIT
  * Code heavily borrowed from Adam Draper
@@ -18,8 +18,6 @@
    * @param input
    * @description if arguments contains any objects
    * then reconstruct the array and use JSON.stringify.
-   * If the arguements contains parameters such {level:warn},
-   * then use it for t
    */
   function filter(input) {
     var array = [];
@@ -112,7 +110,7 @@
   var cout,
     // check for nodeJS
     hasModule = (typeof module !== 'undefined' && module.exports),
-    VERSION = '0.0.2',
+    VERSION = '0.0.3',
     util = require('util'),
     _ = require('lodash'),
     colors = require('colors'),

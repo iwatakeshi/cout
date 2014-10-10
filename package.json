@@ -1,6 +1,6 @@
 {
   "name": "cout",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A basic JavaScript console utility with sprintf and colors support.",
   "main": "cout.js",
   "scripts": {

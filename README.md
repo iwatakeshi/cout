@@ -5,7 +5,7 @@ cout
 [![Downloads](http://img.shields.io/npm/dm/cout.svg)](http://img.shields.io/npm/dm/cout.svg)
 [![Version](http://img.shields.io/npm/v/cout.svg)](http://img.shields.io/npm/v/cout.svg)
 
-[![NPM](https://nodei.co/npm/cout.png)](https://nodei.co/npm/cout/)
+[![NPM](https://nodei.co/npm/cout.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/cout/)
 
 A basic JavaScript console utility with sprintf and colors support.
 
@@ -133,3 +133,18 @@ cout.config({
 ##Test
 
 From lack of knowledge, I do not know how to test outputs and colors....that said, there is a test.js file but it's a very limited test. If you know the best way to test please let me know @github issues. Thanks!
+
+##Changlog
+
+*0.0.1*
+
+* Initial commit
+
+*0.0.2*
+
+* Cleaned code and removed confusing debug statement.
+* Updated readme
+
+*0.0.3*
+* Updated readme
+* Removed unnecessary comments.
