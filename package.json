@@ -1,0 +1,31 @@
+{
+  "name": "cout",
+  "version": "0.0.1",
+  "description": "A basic JavaScript console utility with sprintf and colors support.",
+  "main": "cout.js",
+  "scripts": {
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iwatakeshi/cout.git"
+  },
+  "keywords": [
+    "debug",
+    "console",
+    "utility",
+    "cout",
+    "print"
+  ],
+  "author": "iwatakeshi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/iwatakeshi/cout/issues"
+  },
+  "homepage": "https://github.com/iwatakeshi/cout",
+  "dependencies": {
+    "colors": "^1.0.3",
+    "kawari": "0.0.1",
+    "lodash": "^2.4.1"
+  }
+}
