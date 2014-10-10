@@ -1,13 +1,13 @@
 cout
 ====
-[![License](http://img.shields.io/npm/l/cout.svg)]()
-[![Dependencies](http://img.shields.io/david/iwatakeshi/cout.svg)]()
-[![Downloads](http://img.shields.io/npm/dm/cout.svg)]()
-[![Version](http://img.shields.io/npm/v/cout.svg)]()
+[![License](http://img.shields.io/npm/l/cout.svg)](http://img.shields.io/npm/l/cout.svg)
+[![Dependencies](http://img.shields.io/david/iwatakeshi/cout.svg)](http://img.shields.io/david/iwatakeshi/cout.svg)
+[![Downloads](http://img.shields.io/npm/dm/cout.svg)](http://img.shields.io/npm/dm/cout.svg)
+[![Version](http://img.shields.io/npm/v/cout.svg)](http://img.shields.io/npm/v/cout.svg)
 
+[![NPM](https://nodei.co/npm/cout.png)](https://nodei.co/npm/cout/)
 
 A basic JavaScript console utility with sprintf and colors support.
-
 
 ##Install
 
