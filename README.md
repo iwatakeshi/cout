@@ -1,5 +1,10 @@
 cout
 ====
+[![License](http://img.shields.io/npm/l/cout.svg)]()
+[![Dependencies](http://img.shields.io/david/iwatakeshi/cout.svg)]()
+[![Downloads](http://img.shields.io/npm/dm/cout.svg)]()
+[![Version](http://img.shields.io/npm/v/cout.svg)]()
+
 
 A basic JavaScript console utility with sprintf and colors support.
 
@@ -15,7 +20,12 @@ sudo npm install --save cout
 ```js
 var cout = require('cout'),
 //sprintf(..., ...) or use cout.kawari(..., ...)
-sprintf = cout.kawari; 
+sprintf = cout.kawari;
+
+//configure (optional)
+cout.config({
+	cout: ['warn', 'error']
+});
 
 //will print on a single line (no color)
 cout("Hello", "World", {hello: "world"}, ['hello', 'world'], 1,2,3).end();
