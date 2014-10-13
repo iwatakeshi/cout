@@ -69,6 +69,8 @@ cout.config({
 {
 	//specify which level (Array or String) to display
 	//by default '*' means display all levels
+	//if you pass a level array and want to display end() and endl()
+	//just add 'normal' to the array.
 	cout: ['*'],
 	//default theme/colors/levels
 	theme: {
@@ -129,10 +131,30 @@ cout.config({
 * cyan
 * white
 
+##Time stamp
 
-##Test
+cout uses Moment.js for time stamps. See [Moment.js](http://momentjs.com/)' docs for formatting and locales.
 
-From lack of knowledge, I do not know how to test outputs and colors....that said, there is a test.js file but it's a very limited test. If you know the best way to test please let me know @github issues. Thanks!
+###Usage
+
+Default: false
+
+Acceptable types: Boolean, Plain Object
+
+```js
+//boolean
+true or false
+
+timestamp:{
+	//format the time
+	format:'dddd',
+	//change the locale
+	locale: 'ja',
+	//spacing: can be tabs or spaces
+	space: '\n'
+}
+
+```
 
 ##Changlog
 
@@ -157,3 +179,8 @@ From lack of knowledge, I do not know how to test outputs and colors....that sai
 *0.0.5*
 
 * Added boolean support. You can now set `{cout:...}` to `true` or `false`.
+
+**0.0.6**
+
+* Added time stamp support. You can pass a Boolean or configure the time stamp's locale and format by passing a plain Object.
+* Added 'normal' level for end() and endl() when using an array with levels.

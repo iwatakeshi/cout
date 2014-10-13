@@ -12,6 +12,51 @@
   'use strict';
 
   /************************************
+      Constants & Variables
+  ************************************/
+
+  var cout,
+    // check for nodeJS
+    hasModule = (typeof module !== 'undefined' && module.exports),
+    VERSION = '0.0.5',
+    //npm modules
+    util = require('util'),
+    _ = require('lodash'),
+    colors = require('colors'),
+    moment = require('moment'),
+    bgmap = {
+      black: 'bgBlack',
+      red: 'bgRed',
+      green: 'bgGreen',
+      yellow: 'bgYellow',
+      blue: 'bgBlue',
+      magenta: 'bgMagenta',
+      cyan: 'bgCyan',
+      white: 'bgWhite'
+    },
+    defaults = {
+      cout: ['*'],
+      theme: {
+        data: 'grey',
+        debug: 'blue',
+        error: 'red',
+        help: 'cyan',
+        info: 'green',
+        input: 'grey',
+        prompt: 'grey',
+        silly: 'rainbow',
+        verbose: 'cyan',
+        warn: 'yellow',
+      },
+      json: {
+        space: 2
+      },
+      newline: '\n',
+      timestamp: false
+    },
+    config = defaults;
+
+  /************************************
       Helpers
   ************************************/
   /*
@@ -24,12 +69,12 @@
     _.forEach(input, function(item) {
       if (_.isPlainObject(item)) {
         var space = parseInt(config.json.space) || config.json.space;
-        array.push(config.newline + JSON.stringify(item, null, space) + config.newline);
+        array.push(timestamp(config.newline + JSON.stringify(item, null, space) + config.newline));
       } else {
         if (_.isArray(item)) {
-          array.push(stringify(item));
+          array.push(timestamp(stringify(item)));
         } else {
-          array.push(item.toString());
+          array.push(timestamp(item.toString()));
         }
       }
     });
@@ -88,11 +133,8 @@
   function match(level) {
     var result;
     if (_.isArray(config.cout)) {
-      if (_.indexOf(config.cout, '*') > -1) {
-        result = true;
-      } else if (_.indexOf(config.cout, level.toString().toLowerCase()) > -1) {
-        result = true;
-      }
+      result = _.indexOf(config.cout, '*') > -1 ? true : _.indexOf(config.cout, level.toString().toLowerCase()) > -1 ? true : false;
+
     } else if (_.isString(config.cout)) {
       if (level === '*') {
         result = true;
@@ -107,49 +149,20 @@
     return result;
   }
 
-  /************************************
-      Constants & Variables
-  ************************************/
+  function timestamp(str) {
+    if (_.isBoolean(config.timestamp)) {
 
-  var cout,
-    // check for nodeJS
-    hasModule = (typeof module !== 'undefined' && module.exports),
-    VERSION = '0.0.5',
-    util = require('util'),
-    _ = require('lodash'),
-    colors = require('colors'),
-    bgmap = {
-      black: 'bgBlack',
-      red: 'bgRed',
-      green: 'bgGreen',
-      yellow: 'bgYellow',
-      blue: 'bgBlue',
-      magenta: 'bgMagenta',
-      cyan: 'bgCyan',
-      white: 'bgWhite'
-    },
-    defaults = {
-      cout: ['*'],
-      theme: {
-        data: 'grey',
-        debug: 'blue',
-        error: 'red',
-        help: 'cyan',
-        info: 'green',
-        input: 'grey',
-        prompt: 'grey',
-        silly: 'rainbow',
-        verbose: 'cyan',
-        warn: 'yellow',
-      },
-      json: {
-        space: 2
-      },
-      newline: '\n'
-    },
-    config = defaults;
+      str = config.timestamp ? moment().format() + ":" + config.newline + str : str;
 
+      return str;
+    } else if (_.isPlainObject(config.timestamp)) {
 
+      var time = config.timestamp.format ? moment().format(config.timestamp.format) : time = moment().format();
+      str = config.timestamp.space ? time + config.timestamp.space + str : time + "\t" + str;
+
+      return str;
+    }
+  }
 
   /************************************
       Constructors
@@ -169,12 +182,12 @@
 
   cout.fn = Cout.prototype = {
     end: function() {
-      if (config.cout !== false) {
+      if (config.cout !== false || normal('normal')) {
         console.log.apply(console, this._input);
       }
     },
     endl: function() {
-      if (config.cout !== false) {
+      if (config.cout !== false || match('normal')) {
         console.log.apply(console, filter(this._input));
       }
     },
@@ -275,6 +288,17 @@
 
   cout.config = function(opt) {
     config = _.assign(_.extend(defaults, opt));
+    //configure moment's locale
+    if (_.isBoolean(config.timestamp)) {
+      moment.locale('en');
+    } else if (_.isPlainObject(config.timestamp)) {
+      if (config.timestamp.locale) {
+        moment.locale(config.timestamp.locale);
+      } else {
+        moment.locale('en');
+      }
+
+    }
   };
 
   cout.kawari = require('kawari');
