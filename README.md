@@ -5,7 +5,7 @@ cout
 [![Downloads](http://img.shields.io/npm/dm/cout.svg)](http://img.shields.io/npm/dm/cout.svg)
 [![Version](http://img.shields.io/npm/v/cout.svg)](http://img.shields.io/npm/v/cout.svg)
 
-[![NPM](https://nodei.co/npm/cout.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/cout/)
+[![NPM](https://nodei.co/npm/cout.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/cout/) [![Greenkeeper badge](https://badges.greenkeeper.io/iwatakeshi/cout.svg)](https://greenkeeper.io/)
 
 A basic JavaScript console utility with sprintf and colors support.
 
